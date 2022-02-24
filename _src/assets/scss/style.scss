@@ -1,0 +1,206 @@
+:where(html) {
+  --font-family: Arial, sans-serif;
+  --font-family-heading: Verdana, sans-serif;
+  --color-text: black;
+  --color-text-inverse: white;
+  --color-text-link: red;
+  --color-text-link-hover: purple;
+  --color-text-accent: #d70010;
+  --color-text-caption: #4d1853;
+  --color-text-highlight: yellow;
+  --color-text-subdued: pink;
+  --color-border-accent: #d70010;
+  --color-surface: white;
+  --color-surface-inverse: black;
+  --color-surface-brand: #69247D;
+  --font-weight-semibold: 600;
+  --text-small-font-size: .6875rem;
+  --text-medium-font-size: .75rem;
+  --text-large-font-size: 10pt;
+  --heading-1-font-size: 20pt;
+  --heading-2-font-size: 14pt;
+  --border-width: 2px;
+  --max-width: 780px;
+}
+
+:where(*) {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:where(body) {
+  font-family: var(--font-family);
+  font-size: var(--text-medium-font-size);
+  color: var(--color-text-inverse);
+  background-color: var(--color-surface-brand);
+}
+
+:where(img) {
+  display: block;
+  max-width: 100%;
+}
+
+:where(ol, ul) {
+  list-style: none;
+  padding: 0;
+}
+
+:where(a) {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+.layout {
+  width: var(--max-width);
+  margin: 1px;
+  display: grid;
+  gap: 0 1px;
+  grid-template-columns: 650px auto;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 
+    "header nav" 
+    "main aside"
+    "footer aside";
+  [data-grid-area="header"] {
+    grid-area: header;
+  }
+  [data-grid-area="nav"] {
+    grid-area: nav;
+    justify-self: end;
+  }
+  [data-grid-area="main"] {
+    grid-area: main;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    padding: 1rem;
+  }
+  [data-grid-area="aside"] {
+    grid-area: aside;
+  }
+  [data-grid-area="footer"] {
+    grid-area: footer;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    p {
+      width: 90%;
+      margin-inline: auto;
+      padding-block: .5rem;
+      text-align: center;
+      border-top: var(--border-width) solid var(--color-border-accent);
+      font-size: var(--text-small-font-size);
+    }
+  }
+}
+
+.nav-list {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-small-font-size);
+  text-align: end;
+  padding-block: 1rem;
+  li + li {
+    margin-top: 1em;
+  }
+  a {
+    color: inherit;
+    letter-spacing: .25em;
+    &:hover {
+      color: var(--color-text-link);
+    }
+  }
+}
+
+:where(.heading-1, .heading-2) {
+  font-family: var(--font-family-heading);
+}
+
+.heading-1 {
+  font-size: var(--heading-1-font-size);
+  color: var(--color-text-accent);
+}
+
+.heading-2 {
+  font-size: var(--heading-2-font-size);
+}
+
+.heading-3 {
+  font-size: var(--text-large-font-size);
+  color: var(--text-inverse);
+  background-color: var(--color-surface-inverse);
+}
+
+.text-small {
+  font-size: var(--text-small-font-size);
+}
+
+.text-strong {
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-highlight {
+  color: var(--color-text-highlight);
+}
+
+.text-subdued {
+  color: var(--color-text-subdued);
+}
+
+.flow > :not(:last-child) {
+  margin-block-end: .5rem;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.article > p {
+  text-indent: 1em;
+  text-align: justify
+}
+
+.figure {
+  width: 33%;
+  img {
+    margin-block-end: .5rem;
+  }
+  figcaption {
+    width: 90%;
+    margin-inline: auto;
+    padding-block: .5rem;
+    text-align: center;
+    color: var(--color-text-caption);
+    font-size: var(--text-small-font-size);
+    font-weight: var(--font-weight-semibold);
+    border-top: var(--border-width) solid var(--color-border-accent);
+  }
+}
+
+.float-right {
+  float: right;
+  margin-left: .5rem;
+}
+
+.stack {
+  margin-bottom: 1rem;
+}
+
+.margin-auto {
+  margin-inline: auto;
+}
+
+.table {
+  border-spacing: 0;
+  :where(th) {
+    font-size: var(--text-large-font-size);
+    background-color: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    text-align: left;
+  }
+  :where(th, td) {
+    padding: 0 1px;
+  }
+}
